@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PilahSampah() {
   return (
     <main id="main">
@@ -5,7 +7,11 @@ export default function PilahSampah() {
         <nav>
           <div className="container">
             <ol>
-              <li><a href="index.html">Home</a></li>
+              <li>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
               <li>Pilah sampah</li>
             </ol>
           </div>

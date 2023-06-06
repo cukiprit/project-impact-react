@@ -3,7 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 
 export default function Navbar() {
   return (
-    <header id="header" className="header d-flex align-items-center">
+    <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
         <Link to="/" className="logo d-flex align-items-center">
           <img

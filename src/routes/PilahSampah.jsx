@@ -1,7 +1,7 @@
 export default function PilahSampah() {
   return (
     <main id="main">
-      <div className="breadcrumbs" style={{ paddingTop: "80px" }}>
+      <div className="breadcrumbs">
         <nav>
           <div className="container">
             <ol>

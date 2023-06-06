@@ -26,7 +26,7 @@ export default function PilahSampah() {
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
-                    src="public/organik1.jpg"
+                    src="/organik1.jpg"
                     className="img-fluid rounded-start"
                     alt="organik"
                   />
@@ -52,7 +52,7 @@ export default function PilahSampah() {
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
-                    src="public/anorganik1.jpg"
+                    src="/anorganik1.jpg"
                     className="img-fluid rounded-start"
                     alt="organik"
                   />
@@ -78,7 +78,7 @@ export default function PilahSampah() {
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
-                    src="public/b3-1.jpg"
+                    src="/b3-1.jpg"
                     className="img-fluid rounded-start"
                     alt="organik"
                   />

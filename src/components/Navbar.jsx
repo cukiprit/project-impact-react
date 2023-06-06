@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
-import { BsChevronDown, BsList, BsX } from "react-icons/bs";
-import { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 
 export default function Navbar() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
   return (
-    <header className="header d-flex align-items-center">
-      <div className={`container-fluid container-xl d-flex align-items-center justify-content-between ${isNavOpen ? "mobile-nav-right" : ""}`}>
+    <header id="header" className="header d-flex align-items-center">
+      <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
         <Link to="/" className="logo d-flex align-items-center">
           <img
             src="https://i.ibb.co/Qm0XBTd/logo-tugs-skilvul.png"
@@ -20,17 +13,8 @@ export default function Navbar() {
             height="50"
           />
         </Link>
-        <i
-          className={`mobile-nav-toggle bi ${isNavOpen ? "bi-x" : "bi-list"} text-white`}
-          onClick={toggleNav}
-        >
-          {isNavOpen ? <BsX /> : <BsList />}
-        </i>
-        <nav
-          id="navbar"
-          className={`navbar ${isNavOpen ? "mobile-nav-active" : ""}`}
-        >
-          <ul onClick={toggleNav}>
+        <nav id="navbar" className="navbar">
+          <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -59,11 +43,6 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        {isNavOpen && (
-          <div className="close-btn" onClick={toggleNav}>
-            <BsX />
-          </div>
-        )}
       </div>
     </header>
   );

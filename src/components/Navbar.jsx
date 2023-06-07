@@ -3,7 +3,10 @@ import { BsList } from "react-icons/bs";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#830000" }}>
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#830000" }}
+    >
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           <img

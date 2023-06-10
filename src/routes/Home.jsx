@@ -1,244 +1,252 @@
+import Axios from "axios";
+import { useState } from "react";
 import {
   Card,
-  Button,
-  Container,
-  Row,
   Col,
+  Container,
   Image,
-  Form,
-  FloatingLabel,
+  Row,
+  Modal,
+  Button,
 } from "react-bootstrap";
-import {
-  FaMap,
-  FaEnvelope,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Home() {
+  const [article, setArticle] = useState([]);
+  const [news, setNews] = useState([]);
+  const [modalAlert, setModalAlert] = useState(false);
+
+  const handleModal = () => {
+    setModalAlert(!modalAlert);
+  };
+
+  Axios.get("https://648442b4ee799e3216266fea.mockapi.io/article")
+    .then((res) => {
+      setArticle(res.data);
+    })
+    .catch((err) => console.log("Gagal memuat data"));
+
+  Axios.get("https://648442b4ee799e3216266fea.mockapi.io/news")
+    .then((res) => {
+      setNews(res.data);
+    })
+    .catch((err) => console.log("Gagal memuat data"));
   return (
-    <>
-      <Card className="text-white bg-dark">
-        <Card.Img
-          height="400px"
-          style={{ objectFit: "fill" }}
-          src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-        />
-        <Card.ImgOverlay>
-          <h2>Mari peduli lingkungan sekitarmu</h2>
-          <p>
-            Yuk mulai langkah nyata peduli lingkungan dengan cara membuang
-            sampah pada tempatnya dan jangan lupa untuk memilah sampah sesuai
-            dengan jenisnya ya.
-          </p>
-          <Button>Get Started</Button>
-          <Button>Watch Video</Button>
-        </Card.ImgOverlay>
-      </Card>
+    <main id="main">
+      <div className="breadcrumbs">
+        <nav>
+          <div className="container">
+            <ol>
+              <li>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li>Pilah sampah</li>
+            </ol>
+          </div>
+        </nav>
+      </div>
 
-      <Container>
-        <h1 className="text-center">Tentang Kami</h1>
+      <Container className="mt-4 section-header">
+        <h2>Tentang Kami</h2>
         <Row>
-          <Col>
-            <Row>
-              <Col sm={12}>
-                <h1>
-                  Selamat datang di website kami yang berfokus pada lingkungan
-                  dan pengelolaan sampah!
-                </h1>
-              </Col>
-              <Col>
-                <Image src="../assets/environment.svg" />
-              </Col>
-            </Row>
+          <Col md={6}>
+            <h3 className="text-start">
+              Selamat datang di website kami yang berfokus pada lingkungan dan
+              pengelolaan sampah!
+            </h3>
+            <Image src="/environment.svg" />
           </Col>
+          <Col
+            md={6}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <div className="text-start">
+              <p className="mb-3">
+                Kami ingin mengajak Anda untuk peduli terhadap lingkungan dan
+                mengambil bagian dalam menjaga kebersihan dan kelestarian bumi
+                kita. Kami menyadari bahwa masalah sampah merupakan masalah
+                global yang sangat kompleks.
+              </p>
 
-          <Col>
-            <p>
-              Kami ingin mengajak Anda untuk peduli terhadap lingkungan dan
-              mengambil bagian dalam menjaga kebersihan dan kelestarian bumi
-              kita. Kami menyadari bahwa masalah sampah merupakan masalah global
-              yang sangat kompleks
-            </p>
+              <p className="mb-3">
+                Di sini, Anda akan menemukan berbagai artikel dan tips tentang
+                cara mengurangi sampah, memilah sampah, dan mengelola limbah.
+              </p>
 
-            <p>
-              Di sini, Anda akan menemukan berbagai artikel dan tips tentang
-              cara mengurangi sampah, memilah sampah, dan mengelola limbah.
-            </p>
+              <p className="mb-3">
+                Kami juga menyajikan berita terbaru tentang isu-isu lingkungan
+                terkini dari berbagai sumber terpercaya.
+              </p>
 
-            <p>
-              Kami juga menyajikan berita terbaru tentang isu-isu lingkungan
-              terkini dari berbagai sumber terpercaya.
-            </p>
+              <p className="mb-3">
+                Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan
+                atau ingin berbagi ide mengenai bagaimana kita semua dapat
+                bersama-sama menjaga kelestarian lingkungan.
+              </p>
 
-            <p>
-              Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan
-              atau ingin berbagi ide mengenai bagaimana kita semua dapat
-              bersama-sama menjaga kelestarian lingkungan.
-            </p>
-
-            <p>Terima kasih telah mengunjungi website kami!.</p>
+              <p>Terima kasih telah mengunjungi website kami!.</p>
+            </div>
           </Col>
         </Row>
       </Container>
 
-      <Container>
-        <h1>Pilah Sampah</h1>
-
+      <Container
+        className="section-header"
+        style={{ backgroundColor: "#f6f6f6" }}
+        fluid
+      >
+        <h2 className="pt-4">Pilah Sampah</h2>
         <Row>
-          <Col>
-            <img src="../assets/organik.svg" />
-            <h4>Organik</h4>
-          </Col>
-
-          <Col>
-            <img src="../assets/anorganik.svg" />
-            <h4>Anorganik</h4>
-          </Col>
-
-          <Col>
-            <img src="../assets/b3.svg" />
-            <h4>B3</h4>
-          </Col>
-        </Row>
-
-        <h1>Artikel</h1>
-        <Row>
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>Predikat Sungai Tercemar di Dunia. Bagaimana Solusinya?</h1>
-              </Card.Body>
+          <Col md={4}>
+            <Card border="light" className="p-4">
+              <Card.Img variant="top" src="/organik.svg" />
+              <Card.Title>Organik</Card.Title>
+              <a href="#" className="readmore stretched-link">
+                Read more
+              </a>
             </Card>
           </Col>
 
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>
-                  Membuang Sampah di Sungai Bikin Sungai Jadi Tercemar Berat
-                </h1>
-              </Card.Body>
+          <Col md={4}>
+            <Card border="light" className="p-4">
+              <Card.Img variant="top" src="/anorganik.svg" />
+              <Card.Title>Anorganik</Card.Title>
+              <a href="#" className="readmore stretched-link">
+                Read more
+              </a>
             </Card>
           </Col>
 
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>Kurangi Sampah Plastik Lautan, Apa Strateginya?</h1>
-              </Card.Body>
+          <Col md={4}>
+            <Card border="light" className="p-4">
+              <Card.Img variant="top" src="/b3.svg" />
+              <Card.Title>B3</Card.Title>
+              <a href="#" className="readmore stretched-link">
+                Read more
+              </a>
             </Card>
           </Col>
         </Row>
 
-        <h1>Berita</h1>
+        <h2 className="pt-4">Artikel</h2>
         <Row>
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>
-                  Dampak Bakar Sampah di Jabodetabek Nyaris Setara Karhutla di
-                  Kalimantan
-                </h1>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>Badung Akui Tangani Sampah di TPST Belum Optimal</h1>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col>
-            <Card>
-              <Card.Body>
-                <h1>
-                  Tumpukkan Sampah di Pintu Air Demangan Lama Solo Dibersihkan
-                </h1>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        <h1>Contact</h1>
-        <Card className="p-5">
-          <Row>
+          {article.map((item) => (
             <Col>
-              <div>
-                <div>
-                  <h3>Let's get in touch</h3>
-                  <p>Silahkan tinggalkan pesan Anda pada kolom yang tersedia</p>
+              <Card style={{ minHeight: "100px" }} border="light" key={item.id}>
+                <Card.Body>{item.title}</Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+
+        <h2 className="pt-4">Berita</h2>
+        <Row>
+          {news.map((item) => (
+            <Col>
+              <Card style={{ minHeight: "100px" }} border="light" key={item.id}>
+                <Card.Body>{item.title}</Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+
+      <section id="Contact" className="Contact">
+        <div className="section-header">
+          <h2>Kontak Kami</h2>
+        </div>
+        <div className="contact-container">
+          <div className="form">
+            <div className="contact-info">
+              <h3 className="title">Let's get in touch</h3>
+              <p className="text">
+                Silahkan tinggalkan pesan Anda pada kolom yang tersedia
+              </p>
+
+              <div className="info">
+                <div className="information">
+                  <i className="fa-solid fa-map-location-dot icon"></i>
+                  <p>
+                    Jl. Simprug Golf 8 No. 6, RT.2/RW.8, Grogol Sel., Kec. Kby.
+                    Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta
+                    12220
+                  </p>
                 </div>
-                <FaMap />
-                <p>
-                  Jl. Simprug Golf 8 No. 6, RT.2/RW.8, Grogol Sel., Kec. Kby.
-                  Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta
-                  12220
-                </p>
-                <div>
-                  <FaEnvelope />
+                <div className="information">
+                  <i className="fa-solid fa-envelope icon"></i>
                   <p>info@skilvul.com</p>
                 </div>
-                <div>
-                  <p>Connect with us</p>
-                  <a href="#">
-                    <FaInstagram />
+              </div>
+
+              <div className="social-media">
+                <p>Connect with Us</p>
+                <div className="social-icons">
+                  <a href="https://www.instagram.com/skilvul/">
+                    <i className="fab fa-instagram"></i>
                   </a>
-                  <a href="#">
-                    <FaTwitter />
+                  <a href="https://twitter.com/skilvul">
+                    <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#">
-                    <FaLinkedin />
+                  <a href="https://www.linkedin.com/company/skilvul/mycompany/">
+                    <i className="fab fa-linkedin-in"></i>
                   </a>
                 </div>
               </div>
-            </Col>
-            <Col style={{ backgroundColor: "#830000" }}>
-              <div className="circle one"></div>
-              <div className="circle two"></div>
-
-              <Form>
-                <h3>Kontak Kami</h3>
-                <Form.Group className="mb-3">
-                  <FloatingLabel label="email">
-                    <Form.Control type="text" />
-                  </FloatingLabel>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <FloatingLabel label="nama">
-                    <Form.Control type="text" />
-                  </FloatingLabel>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <FloatingLabel label="telp">
-                    <Form.Control type="telp" />
-                  </FloatingLabel>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <FloatingLabel label="pesan">
-                    <Form.Control as="textarea" style={{ height: "100px" }} />
-                  </FloatingLabel>
-                </Form.Group>
-
-                <Button
-                  style={{ backgroundColor: "white" }}
-                  className="text-black"
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Card>
-      </Container>
-    </>
+            </div>
+            <div className="contact-form">
+              <Modal show={modalAlert} onHide={setModalAlert}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Pemberitahuan</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Pesan Terkirim</Modal.Body>
+              </Modal>
+              <form id="my-form">
+                <h3 className="title">Kontak Kami</h3>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder=""
+                    required
+                  />
+                  <label htmlFor="">Nama</label>
+                  <span>Nama</span>
+                </div>
+                <div className="input-container">
+                  <input
+                    type="email"
+                    className="input"
+                    placeholder=""
+                    required
+                  />
+                  <label htmlFor="">Email</label>
+                  <span>Email</span>
+                </div>
+                <div className="input-container">
+                  <input
+                    type="telp"
+                    className="input"
+                    placeholder=""
+                    required
+                  />
+                  <label htmlFor="">Telp</label>
+                  <span>Telp</span>
+                </div>
+                <div className="input-container textarea">
+                  <textarea name="message" className="input"></textarea>
+                  <label htmlFor="">Pesan</label>
+                  <span>Pesan</span>
+                </div>
+                <button onClick={handleModal} className="btn">
+                  Kirim
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -9,14 +9,22 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
+import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telp, setTelp] = useState("");
+  const [message, setMessage] = useState("");
+
   const [article, setArticle] = useState([]);
   const [news, setNews] = useState([]);
   const [modalAlert, setModalAlert] = useState(false);
 
   const handleModal = () => {
+    const items = [name, email, telp, message];
+    localStorage.setItem("message", JSON.stringify(items));
     setModalAlert(!modalAlert);
   };
 
@@ -47,6 +55,29 @@ export default function Home() {
           </div>
         </nav>
       </div>
+
+      <Card className="text-white">
+        <Card.Img
+          style={{
+            height: "400px",
+            objectFit: "cover",
+            objectPosition: "100% 75%",
+          }}
+          src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+        />
+        <Card.ImgOverlay>
+          <Col md={6}>
+            <h1 className="display-4">Mari peduli lingkungan sekitarmu</h1>
+          </Col>
+          <Col md={6}>
+            <p>
+              Yuk mulai langkah nyata peduli lingkungan dengan cara membuang
+              sampah pada tempatnya dan jangan lupa untuk memilah sampah sesuai
+              dengan jenisnya ya.
+            </p>
+          </Col>
+        </Card.ImgOverlay>
+      </Card>
 
       <Container className="mt-4 section-header">
         <h2>Tentang Kami</h2>
@@ -105,6 +136,7 @@ export default function Home() {
               <Card.Title>Organik</Card.Title>
               <a href="#" className="readmore stretched-link">
                 Read more
+                <FaAngleRight />
               </a>
             </Card>
           </Col>
@@ -115,6 +147,7 @@ export default function Home() {
               <Card.Title>Anorganik</Card.Title>
               <a href="#" className="readmore stretched-link">
                 Read more
+                <FaAngleRight />
               </a>
             </Card>
           </Col>
@@ -125,6 +158,7 @@ export default function Home() {
               <Card.Title>B3</Card.Title>
               <a href="#" className="readmore stretched-link">
                 Read more
+                <FaAngleRight />
               </a>
             </Card>
           </Col>
@@ -208,40 +242,45 @@ export default function Home() {
                   <input
                     type="text"
                     className="input"
-                    placeholder=""
+                    placeholder="Nama"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
-                  <label htmlFor="">Nama</label>
-                  <span>Nama</span>
                 </div>
                 <div className="input-container">
                   <input
                     type="email"
                     className="input"
-                    placeholder=""
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <label htmlFor="">Email</label>
-                  <span>Email</span>
                 </div>
                 <div className="input-container">
                   <input
                     type="telp"
                     className="input"
-                    placeholder=""
+                    placeholder="Telp"
+                    value={telp}
+                    onChange={(e) => setTelp(e.target.value)}
                     required
                   />
-                  <label htmlFor="">Telp</label>
-                  <span>Telp</span>
                 </div>
                 <div className="input-container textarea">
-                  <textarea name="message" className="input"></textarea>
-                  <label htmlFor="">Pesan</label>
-                  <span>Pesan</span>
+                  <textarea
+                    name="message"
+                    className="input"
+                    placeholder="Pesan"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                  ></textarea>
                 </div>
-                <button onClick={handleModal} className="btn">
+                <Button onClick={handleModal} className="btn">
                   Kirim
-                </button>
+                </Button>
               </form>
             </div>
           </div>

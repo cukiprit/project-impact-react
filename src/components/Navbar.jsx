@@ -3,7 +3,10 @@ import { BsList } from "react-icons/bs";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#830000" }}>
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#830000" }}
+    >
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           <img
@@ -32,9 +35,10 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="#">
+              <a href="#tentang-kami" className="nav-link">
                 Tentang Kami
-              </Link>
+              </a>
+              {/* <Link className="nav-link" to="#tentang-kami"></Link> */}
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/pilah-sampah">

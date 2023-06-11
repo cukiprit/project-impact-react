@@ -9,7 +9,7 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
     .catch((err) => console.log("Gagal memuat data"));
   return (
     <main id="main">
-      <div className="breadcrumbs">
+      {/* <div className="breadcrumbs">
         <nav>
           <div className="container">
             <ol>
@@ -54,7 +54,7 @@ export default function Home() {
             </ol>
           </div>
         </nav>
-      </div>
+      </div> */}
 
       <Card className="text-white">
         <Card.Img
@@ -76,11 +76,20 @@ export default function Home() {
               dengan jenisnya ya.
             </p>
           </Col>
+          <Col md={6}>
+            <Button className="btn-get-started">Get Started</Button>
+            <Button className="glightbox btn-watch-video">
+              <div className="d-flex align-items-center">
+                <FaPlay />
+                <span className="pl-5">Watch Video</span>
+              </div>
+            </Button>
+          </Col>
         </Card.ImgOverlay>
       </Card>
 
       <Container className="mt-4 section-header">
-        <h2>Tentang Kami</h2>
+        <h2 id="tentang-kami">Tentang Kami</h2>
         <Row>
           <Col md={6}>
             <h3 className="text-start">
@@ -128,7 +137,9 @@ export default function Home() {
         style={{ backgroundColor: "#f6f6f6" }}
         fluid
       >
-        <h2 className="pt-4">Pilah Sampah</h2>
+        <h2 id="pilah-sampah" className="pt-4">
+          Pilah Sampah
+        </h2>
         <Row>
           <Col md={4}>
             <Card border="light" className="p-4">
@@ -168,7 +179,11 @@ export default function Home() {
         <Row>
           {article.map((item) => (
             <Col>
-              <Card style={{ minHeight: "100px" }} border="light" key={item.id}>
+              <Card style={{ minHeight: "300px" }} border="light" key={item.id}>
+                <Card.Img
+                  style={{ maxHeight: "200px", objectFit: "cover" }}
+                  src={item.images}
+                />
                 <Card.Body>{item.title}</Card.Body>
               </Card>
             </Col>
@@ -179,7 +194,11 @@ export default function Home() {
         <Row>
           {news.map((item) => (
             <Col>
-              <Card style={{ minHeight: "100px" }} border="light" key={item.id}>
+              <Card style={{ minHeight: "300px" }} border="light" key={item.id}>
+                <Card.Img
+                  style={{ maxHeight: "200px", objectFit: "cover" }}
+                  src={item.images}
+                />
                 <Card.Body>{item.title}</Card.Body>
               </Card>
             </Col>

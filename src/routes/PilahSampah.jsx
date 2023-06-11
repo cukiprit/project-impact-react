@@ -3,20 +3,6 @@ import { Link } from "react-router-dom";
 export default function PilahSampah() {
   return (
     <main id="main">
-      <div className="breadcrumbs">
-        <nav>
-          <div className="container">
-            <ol>
-              <li>
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
-              </li>
-              <li>Pilah sampah</li>
-            </ol>
-          </div>
-        </nav>
-      </div>
       <section id="kategori" className="kategori sections-bg">
         <div className="container" data-aos="fade-up">
           <div className="section-header">
@@ -39,7 +25,9 @@ export default function PilahSampah() {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title"><b>Sampah Organik</b></h5>
+                    <h5 className="card-title">
+                      <b>Sampah Organik</b>
+                    </h5>
                     <p className="card-text">
                       Sampah organik adalah jenis sampah yang berasal dari
                       bahan-bahan organik atau yang dapat terurai secara alami
@@ -48,7 +36,9 @@ export default function PilahSampah() {
                       dekomposisi menjadi bahan organik yang berguna seperti
                       pupuk kompos.
                     </p>
-                    <a href="organik.html" className="btn">Lihat Selengkapnya</a>
+                    <a href="organik.html" className="btn">
+                      Lihat Selengkapnya
+                    </a>
                   </div>
                 </div>
               </div>
@@ -65,7 +55,9 @@ export default function PilahSampah() {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title"><b>Sampah Anorganik</b></h5>
+                    <h5 className="card-title">
+                      <b>Sampah Anorganik</b>
+                    </h5>
                     <p className="card-text">
                       Sampah anorganik adalah jenis sampah yang tidak dapat
                       terurai secara alami atau membutuhkan waktu yang sangat
@@ -74,7 +66,9 @@ export default function PilahSampah() {
                       menumpuk di tempat pembuangan sampah sehingga dapat
                       mencemari lingkungan.
                     </p>
-                    <a href="anorganik.html" className="btn">Lihat Selengkapnya</a>
+                    <a href="anorganik.html" className="btn">
+                      Lihat Selengkapnya
+                    </a>
                   </div>
                 </div>
               </div>
@@ -91,7 +85,9 @@ export default function PilahSampah() {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title"><b>Sampah Limbah / B3</b></h5>
+                    <h5 className="card-title">
+                      <b>Sampah Limbah / B3</b>
+                    </h5>
                     <p className="card-text">
                       Sampah limbah atau B3 (Bahan Berbahaya dan Beracun) adalah
                       jenis sampah yang mengandung zat-zat berbahaya dan beracun
@@ -99,7 +95,9 @@ export default function PilahSampah() {
                       B3 dapat berdampak negatif pada kesehatan manusia dan
                       lingkungan jika tidak dikelola dengan benar.
                     </p>
-                    <a href="limbah-b3.html" className="btn">Lihat Selengkapnya</a>
+                    <a href="limbah-b3.html" className="btn">
+                      Lihat Selengkapnya
+                    </a>
                   </div>
                 </div>
               </div>

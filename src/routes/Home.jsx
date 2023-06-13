@@ -25,6 +25,12 @@ export default function Home() {
   const handleModal = () => {
     const items = [name, email, telp, message];
     localStorage.setItem("message", JSON.stringify(items));
+    localStorage.setItem("message", JSON.stringify(items));
+    setName("");
+    setEmail("");
+    setTelp("");
+    setMessage("");
+
     setModalAlert(!modalAlert);
   };
 
@@ -253,7 +259,7 @@ export default function Home() {
                 <Modal.Header closeButton>
                   <Modal.Title>Pemberitahuan</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Pesan Terkirim</Modal.Body>
+                <Modal.Body>Terima kasih telah menghubungi kami </Modal.Body>
               </Modal>
               <form id="my-form">
                 <h3 className="title">Kontak Kami</h3>
